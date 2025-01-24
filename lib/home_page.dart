@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:playground/learn_flutter.dart';
 import 'package:playground/login_page.dart';
 import 'package:playground/shop_page.dart';
+import 'package:playground/productsfeed_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,11 +15,11 @@ class HomePage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const LearnFlutter(),
+                builder: (context) => const ProductsfeedPage(),
               ),
             );
           },
-          child: const Text('Products'),
+          child: const Text('Products Feeds'),
         ),
         ElevatedButton(
           onPressed: () {

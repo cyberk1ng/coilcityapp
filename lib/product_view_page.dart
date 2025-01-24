@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class LearnFlutter extends StatefulWidget {
-  const LearnFlutter({super.key});
+class ProductviewPage extends StatefulWidget {
+  const ProductviewPage({super.key});
 
   @override
-  State<LearnFlutter> createState() => _LearnFlutterState();
+  State<ProductviewPage> createState() => _ProductviewPageState();
 }
 
-class _LearnFlutterState extends State<LearnFlutter> {
+class _ProductviewPageState extends State<ProductviewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Battleship'),
+        title: Text('Product View Page'),
         automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: () {
@@ -33,9 +33,35 @@ class _LearnFlutterState extends State<LearnFlutter> {
               color: Colors.teal,
               width: double.infinity,
               child: const Center(
-                child: Text(
-                  'This szn looks...',
-                  style: TextStyle(color: Colors.white),
+                child: Column(
+                  children: [
+                    Text(
+                      'OutSide Ready',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "In Stock",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "€50.00",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
@@ -56,14 +82,9 @@ class _LearnFlutterState extends State<LearnFlutter> {
                 ),
                 Divider(),
                 Icon(
-                  Icons.favorite,
+                  Icons.share,
                   color: Color.fromRGBO(212, 112, 100, 0.9),
                 ),
-              ],
-            ),
-            Column(
-              children: [
-                Text("This week sales is on"),
               ],
             ),
           ],

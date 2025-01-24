@@ -30,7 +30,11 @@ class _LoginState extends State<Login> {
             borderRadius: BorderRadius.circular(0),
           ),
           child: AppBar(
-            title: const Text('Login Page'),
+            title: Row(
+              children: [
+                Text('Login Page')
+              ],
+            ),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),

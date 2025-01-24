@@ -37,18 +37,36 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Coil City",
-          style: TextStyle(color: Colors.white),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.teal,
+                Color.fromRGBO(212, 112, 100, 0.9),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          margin: EdgeInsets.only(left: 0.0, top: 22.0, bottom: 1.0, right: 0.0),
+          
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(2),
+              child: SizedBox( 
+                height: 100,
+                child: Image.asset(
+                  'images/coilcityLogo.png',
+                  fit: BoxFit.contain,
+                  // Adjust the size
+                ),
+              ),
+            ),
+          ),
         ),
-        centerTitle: false,
-        backgroundColor: Colors.teal,
-        actions: [
-          Icon(Icons.shopping_cart),
-          Icon(Icons.favorite),
-          Icon(Icons.person)
-        ],
       ),
       body: HomePage(),
       bottomNavigationBar: BottomNavigationBar(
