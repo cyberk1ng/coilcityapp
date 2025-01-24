@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.teal),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       home: RootPage(),
     );
   }
@@ -50,22 +52,40 @@ class _RootPageState extends State<RootPage> {
               end: Alignment.bottomRight,
             ),
           ),
-          margin: EdgeInsets.only(left: 0.0, top: 22.0, bottom: 1.0, right: 0.0),
-          
+          margin:
+              EdgeInsets.only(left: 0.0, top: 22.0, bottom: 1.0, right: 0.0),
           child: Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(2),
-              child: SizedBox( 
-                height: 100,
-                child: Image.asset(
-                  'images/coilcityLogo.png',
-                  fit: BoxFit.contain,
-                  // Adjust the size
-                ),
-              ),
-            ),
-          ),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  Image.asset(
+                    'images/coilcityLogo.png',
+                    fit: BoxFit.cover,
+                    // Adjust the size
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 200),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(9),
+                          child: Icon(
+                            Icons.shopping_bag,
+                            color: Colors.white,
+                            size: 30
+                          ),
+                        ),
+                        Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                          size: 30
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),),
         ),
       ),
       body: HomePage(),

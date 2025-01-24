@@ -48,6 +48,7 @@ class _ProductviewPageState extends State<ProductviewPage> {
                         Text(
                           "In Stock",
                           style: TextStyle(
+                            color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
@@ -55,6 +56,7 @@ class _ProductviewPageState extends State<ProductviewPage> {
                         Text(
                           "€50.00",
                           style: TextStyle(
+                            color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),

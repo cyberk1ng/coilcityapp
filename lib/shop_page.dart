@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/productview_page.dart';
+import 'package:playground/product_view_page.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -52,7 +52,8 @@ class _ShopPageState extends State<ShopPage> {
                             _isLiked[index]
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                            color: Colors.teal,
+
+                            color: _isLiked[index] ? Color.fromRGBO(212, 112, 100, 0.9) : Colors.teal,
                             size: 40,
                           ),
                         ),
@@ -87,6 +88,7 @@ class _ShopPageState extends State<ShopPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

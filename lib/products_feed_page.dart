@@ -8,6 +8,8 @@ class ProductsfeedPage extends StatefulWidget {
 }
 
 class _ProductsfeedPageState extends State<ProductsfeedPage> {
+  final List<bool> _isLikedPost = List.generate(10, (index) => false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,10 +105,17 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            Icons.favorite_border,
-                            color: Colors.teal,
-                            size: 30,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isLikedPost[index] = !_isLikedPost[index];
+                              });
+                            },
+                            child: Icon(
+                              _isLikedPost[index] ? Icons.favorite : Icons.favorite_border,
+                              color: _isLikedPost[index] ? Color.fromRGBO(212, 112, 100, 0.9) : Colors.teal,
+                              size: 30,
+                            ),
                           ),
                           Icon(
                             Icons.mode_comment_outlined,
