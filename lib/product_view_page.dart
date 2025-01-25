@@ -77,7 +77,7 @@ class _ProductviewPageState extends State<ProductviewPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Icon(
-                      Icons.shopping_cart,
+                      Icons.add_shopping_cart_outlined,
                       color: Color.fromRGBO(212, 112, 100, 0.9),
                     ),
                   ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:playground/data/constant.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -28,7 +27,10 @@ class _CartPageState extends State<CartPage> {
                 Icon(Icons.shopping_cart),
                 Text(
                   "Chart",
-                  style: KTextStyle.textStyleforcc,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
                 ),
               ],
             ),
@@ -497,8 +499,6 @@ class _CartPageState extends State<CartPage> {
                   ],
                 ),
               ),
-              
-             
               Divider(
                 thickness: 2,
                 color: Colors.teal,
@@ -510,7 +510,6 @@ class _CartPageState extends State<CartPage> {
                   child: Row(
                     children: [
                       Icon(Icons.save),
-                    
                       Text(
                         "Pay",
                       ),

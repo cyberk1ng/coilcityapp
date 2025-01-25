@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:playground/cart_page.dart';
+import 'package:playground/wishlist_page.dart';
 
 class HeaderWidget extends StatefulWidget implements PreferredSizeWidget {
   const HeaderWidget({super.key});
@@ -51,15 +53,35 @@ class _HeaderPageState extends State<HeaderWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Colors.white,
-                    size: 30,
+                  GestureDetector(
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CartPage(),
+                        ),
+                      );
+                    },
                   ),
-                  Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.white,
-                    size: 30,
+                  GestureDetector(
+                    child: Icon(
+                      Icons.favorite_border_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Wishlist(),
+                        ),
+                      );
+                    },
                   ),
                   GestureDetector(
                     onTap: () {
@@ -72,11 +94,12 @@ class _HeaderPageState extends State<HeaderWidget> {
                               title: Text("Profile"),
                               content: Text("Settings"),
                               actions: [
-                                FilledButton(onPressed: () {
-                                  Navigator.pop(context);
-                                }, child: Text("x"))
+                                FilledButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text("x"))
                               ],
-                                
                             ),
                           );
                         },

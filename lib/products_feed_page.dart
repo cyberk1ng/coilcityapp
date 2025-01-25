@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/shop_page.dart';
 
 class ProductsfeedPage extends StatefulWidget {
   const ProductsfeedPage({super.key});
@@ -39,7 +40,6 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                       color: Colors.teal, // Border color
                       width: 1.0, // Border width
                     ),
-
                   ),
                 ),
                 child: Padding(
@@ -97,9 +97,19 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                       ),
                       Container(
                         padding: EdgeInsets.all(9),
-                        child: Image.asset(
-                          "images/coilproduct13.jpeg",
-                          fit: BoxFit.contain,
+                        child: GestureDetector(
+                          child: Image.asset(
+                            "images/coilproduct13.jpeg",
+                            fit: BoxFit.contain,
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShopPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Container(
@@ -114,8 +124,12 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                                 });
                               },
                               child: Icon(
-                                _isLikedPost[index] ? Icons.favorite : Icons.favorite_border,
-                                color: _isLikedPost[index] ? Color.fromRGBO(212, 112, 100, 0.9) : Colors.teal,
+                                _isLikedPost[index]
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: _isLikedPost[index]
+                                    ? Color.fromRGBO(212, 112, 100, 0.9)
+                                    : Colors.teal,
                                 size: 30,
                               ),
                             ),
