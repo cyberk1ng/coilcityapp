@@ -8,8 +8,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController _controller = TextEditingController();
+  //final TextEditingController _controller = TextEditingController();
   bool isClicked = false;
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +32,7 @@ class _LoginState extends State<Login> {
           ),
           child: AppBar(
             title: Row(
-              children: [
-                Text('Login Page')
-              ],
+              children: [Text('Login Page')],
             ),
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -51,6 +50,7 @@ class _LoginState extends State<Login> {
                 children: [
                   Expanded(
                     child: TextField(
+                      // controller: _controller,
                       decoration: const InputDecoration(
                         labelText: 'Username',
                         border: OutlineInputBorder(),
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(iconColor: Colors.teal),
                         onPressed: () {
-                          debugPrint('Enter Text: ${_controller.text}');
+                          // debugPrint('Enter Text: ${_controller.text}');
                         },
                         child: const Icon(Icons.person),
                       ),
@@ -95,9 +95,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(iconColor: Colors.teal),
-                        onPressed: () {
-                          debugPrint('Enter Text: ${_controller.text}');
-                        },
+                        onPressed: () {},
                         child: const Icon(Icons.remove_red_eye),
                       ),
                     ),
@@ -168,7 +166,15 @@ class _LoginState extends State<Login> {
                     'Forgot Login?',
                     style: TextStyle(color: Colors.teal),
                   )),
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage("images/coilproduct18.jpeg"),
+              ),
+
+         
             ],
+
+
           ),
         ),
       ),

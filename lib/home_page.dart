@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:playground/login_page.dart';
 import 'package:playground/shop_page.dart';
 import 'package:playground/products_feed_page.dart';
+import 'package:playground/cart_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -42,6 +44,17 @@ class HomePage extends StatelessWidget {
             );
           },
           child: const Text('Shop'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CartPage(),
+              ),
+            );
+          },
+          child: const Text('Cart'),
         ),
       ]),
     );

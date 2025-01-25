@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground/home_page.dart';
+import 'package:playground/widgets/header_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,55 +40,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Color.fromRGBO(212, 112, 100, 0.9),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          margin:
-              EdgeInsets.only(left: 0.0, top: 22.0, bottom: 1.0, right: 0.0),
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Row(
-                children: [
-                  Image.asset(
-                    'images/coilcityLogo.png',
-                    fit: BoxFit.cover,
-                    // Adjust the size
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 200),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(9),
-                          child: Icon(
-                            Icons.shopping_bag,
-                            color: Colors.white,
-                            size: 30
-                          ),
-                        ),
-                        Icon(
-                          Icons.favorite,
-                          color: Colors.white,
-                          size: 30
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),),
-        ),
-      ),
+      appBar: HeaderWidget(),
       body: HomePage(),
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -95,14 +48,15 @@ class _RootPageState extends State<RootPage> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
+           BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
+            icon: Icon(Icons.textsms),
+            label: "DM",
           ),
+         
         ],
         currentIndex: _currentPage,
         selectedItemColor: Colors.blue,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:playground/data/constant.dart';
 import 'package:playground/product_view_page.dart';
+//import 'package:playground/widgets/header_widget.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -14,9 +16,12 @@ class _ShopPageState extends State<ShopPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+        preferredSize: Size(100, 80),
+        child: AppBar(),
+      ),
       body: Container(
-        margin: EdgeInsets.all(2),
+        margin: EdgeInsets.only(top: 10, left: 2, right: 2, bottom: 2),
         padding: EdgeInsets.all(4),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,8 +57,9 @@ class _ShopPageState extends State<ShopPage> {
                             _isLiked[index]
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-
-                            color: _isLiked[index] ? Color.fromRGBO(212, 112, 100, 0.9) : Colors.teal,
+                            color: _isLiked[index]
+                                ? Color.fromRGBO(212, 112, 100, 0.9)
+                                : Colors.teal,
                             size: 40,
                           ),
                         ),
@@ -83,12 +89,8 @@ class _ShopPageState extends State<ShopPage> {
                       margin: EdgeInsets.only(bottom: 5),
                       child: Text(
                         "OutSide Ready",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: KTextStyle.textStyleforcc
                       ),
-                      
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,9 +98,9 @@ class _ShopPageState extends State<ShopPage> {
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           child: Text(
-                            "€50.00",
+                            "50,99 €",
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
