@@ -10,7 +10,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   //final TextEditingController _controller = TextEditingController();
   bool isClicked = false;
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,20 +161,17 @@ class _LoginState extends State<Login> {
                 height: 50,
               ),
               TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Forgot Login?',
-                    style: TextStyle(color: Colors.teal),
-                  )),
+                onPressed: () {},
+                child: Text(
+                  'Forgot Login?',
+                  style: TextStyle(color: Colors.teal),
+                ),
+              ),
               CircleAvatar(
                 radius: 50.0,
                 backgroundImage: AssetImage("images/coilproduct18.jpeg"),
               ),
-
-         
             ],
-
-
           ),
         ),
       ),
