@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground/data/constant.dart';
-import 'package:playground/product_view_page.dart';
+import 'package:playground/pages/product_view_page.dart';
 //import 'package:playground/widgets/header_widget.dart';
 
 class ShopPage extends StatefulWidget {

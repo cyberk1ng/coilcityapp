@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:playground/home_page.dart';
+import 'package:playground/pages/home_page.dart';
 import 'package:playground/widgets/header_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:playground/firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -48,7 +52,7 @@ class _RootPageState extends State<RootPage> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
           ),
@@ -56,7 +60,6 @@ class _RootPageState extends State<RootPage> {
             icon: Icon(Icons.textsms),
             label: "DM",
           ),
-         
         ],
         currentIndex: _currentPage,
         selectedItemColor: Colors.blue,

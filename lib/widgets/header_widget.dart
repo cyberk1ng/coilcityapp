@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:playground/cart_page.dart';
-import 'package:playground/wishlist_page.dart';
+import 'package:playground/pages/cart_page.dart';
+import 'package:playground/pages/wishlist_page.dart';
 
 class HeaderWidget extends StatefulWidget implements PreferredSizeWidget {
   const HeaderWidget({super.key});

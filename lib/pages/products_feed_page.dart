@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground/shop_page.dart';
+import 'package:playground/pages/shop_page.dart';
 
 class ProductsfeedPage extends StatefulWidget {
   const ProductsfeedPage({super.key});

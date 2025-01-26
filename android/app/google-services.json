@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508615971640",
+    "project_id": "coilcity",
+    "storage_bucket": "coilcity.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508615971640:android:73b7d97e266ae9c0a827cd",
+        "android_client_info": {
+          "package_name": "com.example.playground"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaytFBD9gL-0qQBfpNPQvU5eXefKWNqtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
