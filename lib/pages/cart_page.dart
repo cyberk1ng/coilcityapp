@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:playground/components/product_qty.dart';
+import 'package:playground/components/products_sizes.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -8,10 +10,11 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final List<String> _items = ["S", "M", "L", "X", "XL"];
+  final List<String> _itemSizes = ["S", "M", "L", "XL", "2XL"];
+  final List<String> _selectedSize = List.generate(5, (index) => "M");
 
-  final List<int?> _selectedQty = List.generate(10, (index) => 1);
-  final List<String> _selectedSize = List.generate(5, (index) => "S");
+  int _selectedQty = 1;
+  final int _maxQty = 5;
 
   String _selectedContent = "Bill & Ship Address";
   @override
@@ -73,62 +76,40 @@ class _CartPageState extends State<CartPage> {
                                     ),
                                     Row(
                                       children: [
-                                        Container(
-                                          child: DropdownButton<String>(
-                                            value: _selectedSize[index],
-                                            items: _items.map(
-                                              (String item) {
-                                                return DropdownMenuItem<String>(
-                                                  value: item,
-                                                  child: Text(item),
-                                                );
-                                              },
-                                            ).toList(),
-                                            onChanged: (String? newValue) {
-                                              setState(() {
-                                                _selectedSize[index] =
-                                                    newValue!;
-                                              });
-                                            },
-                                            icon: Icon(Icons.arrow_drop_down),
-                                            underline: Container(
-                                              height: 2,
-                                              color: Colors
-                                                  .teal, // Underline color
-                                            ),
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold),
+                                        // call the producesizes component with the respective args.
+                                        ProductsSizes(
+                                          items: _itemSizes,
+                                          selectedSize: _selectedSize[index],
+                                          onChanged: (newSize) {
+                                            setState(() {
+                                              _selectedSize[index] = newSize;
+                                            });
+                                          },
+                                          underlineColor: Colors.teal,
+                                          textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Container(
                                           height: 20.0,
-                                          child: VerticalDivider(),
+                                          child: VerticalDivider(
+                                            thickness: 2,
+                                          ),
                                         ),
-                                        Container(
-                                          child: DropdownButton(
-                                            value: _selectedQty[index],
-                                            items: List.generate(
-                                              5,
-                                              (index) => DropdownMenuItem<int>(
-                                                value: index + 1,
-                                                child: Text("${index + 1}"),
-                                              ),
-                                            ),
-                                            onChanged: (int? newValue) {
-                                              setState(
-                                                () {
-                                                  _selectedQty[index] =
-                                                      newValue;
-                                                },
-                                              );
-                                            },
-                                            icon: Icon(Icons.arrow_drop_down),
-                                            underline: Container(
-                                              height: 2,
-                                              color: Colors
-                                                  .teal, // Underline color
-                                            ),
+
+                                        ProductQty(
+                                          selectedQty: _selectedQty,
+                                          onChanged: (newQty) {
+                                            setState(() {
+                                              _selectedQty = newQty;
+                                            });
+                                          },
+                                          maxQty: _maxQty,
+                                          underlineColor: Colors.teal,
+                                          textStyle: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ],
@@ -247,121 +228,120 @@ class _CartPageState extends State<CartPage> {
         return SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
-            child: Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Fullname *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Address *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "ZIP *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "City *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Country *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Mobile Number *",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        CheckboxListTile(
-                          title: Text(
-                              "Delivery and billing addresses are the same"),
-                          value: true,
-                          onChanged: (bool? newBool) {},
-                        ),
-                        FilledButton(
-                          onPressed: () {},
-                          child: Container(
-                            width: 50,
-                            child: Row(
-                              children: [
-                                Icon(Icons.save),
-                                Text(
-                                  "Save",
-                                ),
-                              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Fullname *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
                             ),
                           ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Address *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "ZIP *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "City *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Country *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Mobile Number *",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          TextField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      CheckboxListTile(
+                        title: Text(
+                            "Delivery and billing addresses are the same"),
+                        value: false,
+                        onChanged: (bool? newBool) {},
+                      ),
+                      FilledButton(
+                        style: FilledButton.styleFrom(backgroundColor: Colors.teal),
+                        onPressed: () {},
+                        child: Container(
+                          width: 50,
+                          child: Row(
+                            children: [
+                              Icon(Icons.save),
+                              Text(
+                                "Save",
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
@@ -400,6 +380,7 @@ class _CartPageState extends State<CartPage> {
                 ),
                 FilledButton(
                   onPressed: () {},
+                  style: FilledButton.styleFrom(backgroundColor: Colors.teal),
                   child: Container(
                     width: 50,
                     child: Row(
@@ -505,6 +486,7 @@ class _CartPageState extends State<CartPage> {
               ),
               FilledButton(
                 onPressed: () {},
+                style: FilledButton.styleFrom(backgroundColor: Colors.teal),
                 child: Container(
                   width: 50,
                   child: Row(

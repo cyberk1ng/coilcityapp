@@ -6,4 +6,10 @@ class KTextStyle {
     fontSize: 17.0,
     fontWeight: FontWeight.bold,
   );
+
+  static const TextStyle drawerTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 17.0,
+    fontWeight: FontWeight.bold,
+  );
 }

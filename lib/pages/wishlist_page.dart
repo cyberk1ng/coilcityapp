@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/components/products_sizes.dart';
 
 class Wishlist extends StatefulWidget {
   const Wishlist({super.key});
@@ -8,29 +9,36 @@ class Wishlist extends StatefulWidget {
 }
 
 class _WishlistState extends State<Wishlist> {
-  final List<String> _items = ["S", "M", "L", "X", "XL"];
+  final List<String> _itemsSizes = ["S", "M", "L", "X", "XL"];
 
-  final List<int?> _selectedQty = List.generate(10, (index) => 1);
   final List<String> _selectedSize = List.generate(5, (index) => "S");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+     
+     // drawer: MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Text(
-                  "WishList",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,),
-                ),
+              "WishList",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 40),
               child: Container(
                 margin: EdgeInsets.only(right: 300, top: 20),
                 child: Text(
                   "2 Articles",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
                 ),
               ),
             ),
@@ -72,68 +80,30 @@ class _WishlistState extends State<Wishlist> {
                                           ),
                                         ),
                                         Text(
-                                      "50,99 €",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
+                                          "50,99 €",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15),
+                                        ),
                                       ],
                                     ),
                                   ),
                                   Row(
                                     children: [
-                                      Container(
-                                        child: DropdownButton<String>(
-                                          value: _selectedSize[index],
-                                          items: _items.map(
-                                            (String item) {
-                                              return DropdownMenuItem<String>(
-                                                value: item,
-                                                child: Text(item),
-                                              );
+                                      ProductsSizes(
+                                        items: _itemsSizes,
+                                        selectedSize: _selectedSize[index],
+                                        onChanged: (newSize) {
+                                          setState(
+                                            () {
+                                              _selectedSize[index] = newSize;
                                             },
-                                          ).toList(),
-                                          onChanged: (String? newValue) {
-                                            setState(() {
-                                              _selectedSize[index] = newValue!;
-                                            });
-                                          },
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          underline: Container(
-                                            height: 2,
-                                            color: Colors.teal, // Underline color
-                                          ),
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 20.0,
-                                        child: VerticalDivider(),
-                                      ),
-                                      Container(
-                                        child: DropdownButton(
-                                          value: _selectedQty[index],
-                                          items: List.generate(
-                                            5,
-                                            (index) => DropdownMenuItem<int>(
-                                              value: index + 1,
-                                              child: Text("${index + 1}"),
-                                            ),
-                                          ),
-                                          onChanged: (int? newValue) {
-                                            setState(
-                                              () {
-                                                _selectedQty[index] = newValue;
-                                              },
-                                            );
-                                          },
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          underline: Container(
-                                            height: 2,
-                                            color: Colors.teal, // Underline color
-                                          ),
+                                          );
+                                        },
+                                        underlineColor: Colors.teal,
+                                        textStyle: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ],
@@ -145,9 +115,9 @@ class _WishlistState extends State<Wishlist> {
                               margin: EdgeInsets.only(left: 50),
                               child: Column(
                                 children: [
-                                  
                                   Container(
-                                    margin: EdgeInsets.only(left: 56, bottom: 60),
+                                    margin:
+                                        EdgeInsets.only(left: 56, bottom: 60),
                                     child: Text(
                                       "X",
                                       style: TextStyle(
@@ -157,8 +127,13 @@ class _WishlistState extends State<Wishlist> {
                                     ),
                                   ),
                                   Container(
-                                    margin: EdgeInsets.only(left: 56, bottom: 8,),
-                                    child: Icon(Icons.add_shopping_cart_outlined,),
+                                    margin: EdgeInsets.only(
+                                      left: 56,
+                                      bottom: 8,
+                                    ),
+                                    child: Icon(
+                                      Icons.add_shopping_cart_outlined,
+                                    ),
                                   )
                                 ],
                               ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:playground/pages/cart_page.dart';
-import 'package:playground/pages/wishlist_page.dart';
 
 class HeaderWidget extends StatefulWidget implements PreferredSizeWidget {
   const HeaderWidget({super.key});
@@ -53,63 +51,11 @@ class _HeaderPageState extends State<HeaderWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  GestureDetector(
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CartPage(),
-                        ),
-                      );
-                    },
-                  ),
-                  GestureDetector(
-                    child: Icon(
-                      Icons.favorite_border_outlined,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Wishlist(),
-                        ),
-                      );
-                    },
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            width: double.infinity,
-                            child: AlertDialog(
-                              title: Text("Profile"),
-                              content: Text("Settings"),
-                              actions: [
-                                FilledButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text("x"))
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Icon(
-                      Icons.person_2_outlined,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+                 
+                  Icon(
+                    Icons.person_2_outlined,
+                    color: Colors.white,
+                    size: 30,
                   ),
                 ],
               ),

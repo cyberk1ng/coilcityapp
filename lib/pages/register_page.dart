@@ -2,10 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:playground/components/my_textfield.dart';
 import 'package:playground/helper/helper_function.dart';
-import 'package:playground/pages/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final void Function()? onTap;
+
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -30,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
       Navigator.pop(context);
       print("not a match");
 
-      displayUserMessage("Passwords dont match", context);
+      displayUserMessage("Passwords don't match!", context);
     } else {
       //try to create a user
       try {
@@ -113,13 +114,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: ElevatedButton(
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.teal),
-                    onPressed: () {
-                      registeUser;
-                    },
                     child: Text(
                       'Register',
                       style: TextStyle(color: Colors.white),
                     ),
+                    onPressed: () {
+                      registeUser();
+                    },
                   ),
                 ),
                 Row(
@@ -128,19 +129,19 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       "Already hava an Account?",
                     ),
-                    TextButton(
-                      child: Text(
-                        "Login Here",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: Text(
+                          "Login Here",
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()));
-                      },
-                    )
+                    ),
+                    
+            
                   ],
                 )
               ],

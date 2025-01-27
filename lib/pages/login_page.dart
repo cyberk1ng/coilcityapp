@@ -2,37 +2,40 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:playground/components/my_textfield.dart';
 import 'package:playground/helper/helper_function.dart';
-import 'package:playground/pages/register_page.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  final void Function()? onTap;
+
+  const Login({super.key, required this.onTap});
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-
-  void login () async {
+  void login() async {
     // showing the loading circle first
 
-    showDialog(context: context, builder: (context) =>  Center(
-      child: CircularProgressIndicator(),
-    ),);
+    showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
 
     //try to sign in
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailcontroller.text, password: pwcontroller.text,);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroller.text,
+        password: pwcontroller.text,
+      );
 
-      if(context.mounted) Navigator.pop(context);
-    }
-
-    on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
+      if (mounted) Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      
       displayUserMessage(e.code, context);
     }
   }
-
 
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController pwcontroller = TextEditingController();
@@ -100,7 +103,7 @@ class _LoginState extends State<Login> {
                   child: ElevatedButton(
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.teal),
-                    onPressed: () {},
+                    onPressed: login,
                     child: Text(
                       'Login',
                       style: TextStyle(color: Colors.white),
@@ -113,20 +116,16 @@ class _LoginState extends State<Login> {
                     Text(
                       "Don't have an account?",
                     ),
-                    TextButton(
-                      child: Text(
-                        "Register Here",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: Text(
+                          "Register Here",
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RegisterPage(),
-                          ),
-                        );
-                      },
                     )
                   ],
                 )

@@ -1,4 +1,4 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:playground/pages/login_page.dart';
 import 'package:playground/pages/register_page.dart';
 
@@ -30,4 +30,4 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
       return RegisterPage(onTap: togglepage); 
     }
   }
-} */
+}

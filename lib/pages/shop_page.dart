@@ -84,6 +84,7 @@ class _ShopPageState extends State<ShopPage> {
                         ),
                       ),
                     ),
+                    
                     Container(
                       padding: EdgeInsets.only(bottom: 5),
                       margin: EdgeInsets.only(bottom: 5),
@@ -131,6 +132,7 @@ class _ShopPageState extends State<ShopPage> {
           },
         ),
       ),
+    
     );
   }
 }

@@ -1,5 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:playground/pages/shop_page.dart';
+import 'package:playground/pages/product_view_page.dart';
 
 class ProductsfeedPage extends StatefulWidget {
   const ProductsfeedPage({super.key});
@@ -9,15 +10,20 @@ class ProductsfeedPage extends StatefulWidget {
 }
 
 class _ProductsfeedPageState extends State<ProductsfeedPage> {
+
+  void logout(){
+    FirebaseAuth.instance.signOut();
+  }
+
+
   final List<bool> _isLikedPost = List.generate(10, (index) => false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Products Feeds"),
-        ),
+        appBar: AppBar(),
         body: ListView.builder(
+          
           itemCount: 10,
           itemBuilder: (context, index) {
             return ListTile(
@@ -43,7 +49,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(.0),
                   child: Column(
                     children: [
                       Align(
@@ -75,18 +81,13 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(right: 12),
+                            padding: EdgeInsets.only(right: 90),
                             child: Text(
                               "Coil City@ New_products",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.only(right: 8),
-                            child: Text(
-                              "3 sec ago",
-                            ),
-                          ),
+                        
                         ],
                       ),
                       Container(
@@ -106,7 +107,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ShopPage(),
+                                builder: (context) => const ProductviewPage(),
                               ),
                             );
                           },
