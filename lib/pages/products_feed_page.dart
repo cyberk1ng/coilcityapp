@@ -21,7 +21,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        
         body: ListView.builder(
           
           itemCount: 10,
@@ -65,7 +65,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 7),
+                            margin: EdgeInsets.only(left: 15),
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: Colors.teal,
@@ -81,7 +81,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(right: 90),
+                            padding: EdgeInsets.only(right: 100),
                             child: Text(
                               "Coil City@ New_products",
                               style: TextStyle(fontWeight: FontWeight.bold),

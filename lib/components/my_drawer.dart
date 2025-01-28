@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:playground/data/constant.dart';
-import 'package:playground/pages/wishlist_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -22,12 +21,18 @@ class MyDrawer extends StatelessWidget {
               DrawerHeader(
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 25),
-                      child: CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage("images/CCemptyLogo.png"),
-                        backgroundColor: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, '/profile_page');
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 25),
+                        child: CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage: AssetImage("images/CCemptyLogo.png"),
+                          backgroundColor: Colors.white,
+                        ),
                       ),
                     ),
                    
@@ -74,12 +79,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Wishlist(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/wishlist_page');
                   },
                 ),
               ),

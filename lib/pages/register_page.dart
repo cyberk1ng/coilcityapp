@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:playground/components/my_textfield.dart';
@@ -20,11 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void registeUser() async {
     // firstly a loading circle
-    showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ));
+     
 
     //confirm pw match
     if (pwcontroller.text != confirmPwcontroller.text) {
@@ -42,14 +39,31 @@ class _RegisterPageState extends State<RegisterPage> {
           password: pwcontroller.text,
         );
 
+        // here creating a user document and adding it to firestore
+
+        createUserDoc(userCredential);
+
         //popping loading circle
-        Navigator.pop(context);
+        if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         //popping loading circle
 
         //displaying error message to user
         displayUserMessage(e.code, context);
       }
+    }
+  }
+
+  // creating a user document and collect them in firestone
+  Future<void> createUserDoc(UserCredential? userCredential) async {
+    if (userCredential != null && userCredential.user != null) {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email)
+          .set({
+        'email': userCredential.user!.email,
+        'username': usernamecontroller.text,
+      });
     }
   }
 
@@ -140,8 +154,6 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    
-            
                   ],
                 )
               ],

@@ -4,6 +4,8 @@ import 'package:playground/components/my_drawer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:playground/firebase_options.dart';
 import 'package:playground/pages/cart_page.dart';
+import 'package:playground/pages/profile_page.dart';
+import 'package:playground/pages/wishlist_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +24,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
       ),
       home: RootPage(),
+      routes: {
+        '/wishlist_page': (context) => const Wishlist(),
+        '/profile_page': (context) => ProfilePage(),
+      },
     );
   }
 }
@@ -58,7 +64,6 @@ class _RootPageState extends State<RootPage> {
           ),
         ],
         flexibleSpace: Container(
-         
           decoration: BoxDecoration(
             //This here is to set the mix color of header using the LinearGradient Widg.
             gradient: LinearGradient(
@@ -72,7 +77,6 @@ class _RootPageState extends State<RootPage> {
           ),
           margin:
               EdgeInsets.only(left: 0.0, top: 22.0, bottom: 1.0, right: 0.0),
-
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
