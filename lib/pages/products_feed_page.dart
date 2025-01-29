@@ -1,30 +1,33 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:playground/pages/product_view_page.dart';
+import 'package:playground/providers/products_provider.dart';
 
-class ProductsfeedPage extends StatefulWidget {
+class ProductsfeedPage extends ConsumerStatefulWidget {
   const ProductsfeedPage({super.key});
 
   @override
-  State<ProductsfeedPage> createState() => _ProductsfeedPageState();
+  ConsumerState<ProductsfeedPage> createState() => _ProductsfeedPageState();
 }
 
-class _ProductsfeedPageState extends State<ProductsfeedPage> {
+class _ProductsfeedPageState extends ConsumerState<ProductsfeedPage> {
 
   void logout(){
     FirebaseAuth.instance.signOut();
   }
 
 
-  final List<bool> _isLikedPost = List.generate(10, (index) => false);
+//  final List<bool> _isLikedPost = List.generate(10, (index) => false);
 
   @override
   Widget build(BuildContext context) {
+    final productFeed = ref.watch(productfeedProvider);
     return Scaffold(
         
         body: ListView.builder(
           
-          itemCount: 10,
+          itemCount: productFeed.length,
           itemBuilder: (context, index) {
             return ListTile(
               title: Container(
@@ -100,7 +103,7 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                         padding: EdgeInsets.all(9),
                         child: GestureDetector(
                           child: Image.asset(
-                            "images/coilproduct13.jpeg",
+                             productFeed[index].image,
                             fit: BoxFit.contain,
                           ),
                           onTap: () {
@@ -120,18 +123,19 @@ class _ProductsfeedPageState extends State<ProductsfeedPage> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                setState(() {
+                               /*  setState(() {
                                   _isLikedPost[index] = !_isLikedPost[index];
-                                });
+                                }); */
                               },
                               child: Icon(
-                                _isLikedPost[index]
+                                Icons.favorite_border
+                               /*  _isLikedPost[index]
                                     ? Icons.favorite
                                     : Icons.favorite_border,
                                 color: _isLikedPost[index]
                                     ? Color.fromRGBO(212, 112, 100, 0.9)
                                     : Colors.teal,
-                                size: 30,
+                                size: 30, */
                               ),
                             ),
                             Icon(

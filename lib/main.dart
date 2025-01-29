@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:playground/auth/auth.dart';
 import 'package:playground/components/my_drawer.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,7 +11,7 @@ import 'package:playground/pages/wishlist_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -105,12 +106,7 @@ class _RootPageState extends State<RootPage> {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all(
-                  Color.fromARGB(
-                    255,
-                    92,
-                    192,
-                    182,
-                  ),
+                   Colors.teal
                 ),
               ),
               onPressed: () {
@@ -123,25 +119,20 @@ class _RootPageState extends State<RootPage> {
               },
               child: Icon(
                 Icons.shopping_cart,
-                color: Color.fromRGBO(223, 91, 76, 0.898),
+                color: Colors.white,
                 size: 30.0,
               ),
             ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all(
-                  Color.fromARGB(
-                    255,
-                    92,
-                    192,
-                    182,
-                  ),
+                  Colors.teal
                 ),
               ),
               onPressed: () {},
               child: Icon(
                 Icons.search,
-                color: Color.fromRGBO(223, 91, 76, 0.898),
+                color: Colors.white,
                 size: 30.0,
               ),
             ),
