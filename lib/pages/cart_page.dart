@@ -91,7 +91,7 @@ class _CartPageState extends State<CartPage> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 20.0,
                                           child: VerticalDivider(
                                             thickness: 2,
@@ -327,7 +327,7 @@ class _CartPageState extends State<CartPage> {
                       FilledButton(
                         style: FilledButton.styleFrom(backgroundColor: Colors.teal),
                         onPressed: () {},
-                        child: Container(
+                        child: SizedBox(
                           width: 50,
                           child: Row(
                             children: [
@@ -381,7 +381,7 @@ class _CartPageState extends State<CartPage> {
                 FilledButton(
                   onPressed: () {},
                   style: FilledButton.styleFrom(backgroundColor: Colors.teal),
-                  child: Container(
+                  child: SizedBox(
                     width: 50,
                     child: Row(
                       children: [
@@ -487,7 +487,7 @@ class _CartPageState extends State<CartPage> {
               FilledButton(
                 onPressed: () {},
                 style: FilledButton.styleFrom(backgroundColor: Colors.teal),
-                child: Container(
+                child: SizedBox(
                   width: 50,
                   child: Row(
                     children: [

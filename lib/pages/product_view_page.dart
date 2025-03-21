@@ -76,7 +76,7 @@ class _ProductviewPageState extends State<ProductviewPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               height: 20.0,
                               child: VerticalDivider(
                                 thickness: 2,

@@ -8,13 +8,13 @@ class ProductQty extends StatefulWidget {
   final TextStyle? textStyle;
 
   const ProductQty({
-    Key? key,
+    super.key,
     required this.selectedQty,
     required this.onChanged,
     required this.maxQty,
     required this.underlineColor,
     required this.textStyle,
-  }) : super(key: key);
+  });
 
   @override
   State<ProductQty> createState() => _ProductQtyState();

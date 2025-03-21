@@ -8,13 +8,13 @@ class ProductsSizes extends StatefulWidget {
   final TextStyle? textStyle;
 
   const ProductsSizes({
-    Key? key,
+    super.key,
     required this.items,
     required this.selectedSize,
     required this.onChanged,
     required this.underlineColor,
     required this.textStyle,
-  }) : super(key: key);
+  });
 
   @override
   State<ProductsSizes> createState() => _ProductsSizesState();
